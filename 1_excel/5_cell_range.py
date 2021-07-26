@@ -43,18 +43,30 @@ for i in range(1, 11): #10개 데이터 넣기
 #         print(cell.value, end=" ")
 #     print()
 
-from openpyxl.utils.cell import coordinate_from_string  # 셀 정보 가져오기
-row_range = ws[2:ws.max_row] # 2번째 줄부터 마지막 줄까지
-for rows in row_range:
-    for cell in rows:
-        # print(cell.coordinate, end=" ")
-        xy = coordinate_from_string(cell.coordinate)
-        #A250을 A / 250 으로 끊어줘서 행이나 열 번호가 클 때 도움
-        # print(xy, end=" ")
-        print(xy[0], end="")  # A
-        print(xy[1], end=" ") # 1
-        # 위 두줄과 같음 print(cell.coordinate, end=" ")
-    print()
-    
+# from openpyxl.utils.cell import coordinate_from_string  # 셀 정보 가져오기
+# row_range = ws[2:ws.max_row] # 2번째 줄부터 마지막 줄까지
+# for rows in row_range:
+#     for cell in rows:
+#         # print(cell.coordinate, end=" ")
+#         xy = coordinate_from_string(cell.coordinate)
+#         #A250을 A / 250 으로 끊어줘서 행이나 열 번호가 클 때 도움
+#         # print(xy, end=" ")
+#         print(xy[0], end="")  # A
+#         print(xy[1], end=" ") # 1
+#         # 위 두줄과 같음 print(cell.coordinate, end=" ")
+#     print()
+
+# 전체 rows - 모든 줄
+#print(ws.rows)로 하면 알수 없는 정보가 뜸
+# print(tuple(ws.rows)) # 괄호 묶음 단위가 행, 밑 두줄이랑 같음
+# for row in tuple(ws.rows):
+#     print(row)
+
+for row in tuple(ws.rows):
+    print(row[1].value) # 1행의
+
+# 전체 columns
+# print(tuple(ws.columns)) # 괄호 묶음 단위가 열
+
 
 wb.save("sample_5.xlsx")
