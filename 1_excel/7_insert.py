@@ -8,6 +8,9 @@ ws = wb.active
 # 8번쨰 줄 위치에 5줄 추가
 # ws.insert_rows(8,5)
 
+# wb.save("sample_insert_rows.xlsx")
+
+
 # 새로운 빈 열이 추가 - B열 비어짐
 # ws.insert_cols(2)
 
