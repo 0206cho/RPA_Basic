@@ -1,4 +1,5 @@
-from openpyxl import Workbook # openpyxl사용하기 위해서
+from openpyxl import Workbook 
+# openpyxl사용하기 위해서
 wb = Workbook() # 엑셀의 새 워크북 생성
 ws = wb.active # 현재 활성화된 Sheet가져옴
 ws.title = "NadoSheet" # 워크 시트의 이름 변경
