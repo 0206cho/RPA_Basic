@@ -62,11 +62,35 @@ for i in range(1, 11): #10개 데이터 넣기
 # for row in tuple(ws.rows):
 #     print(row)
 
-for row in tuple(ws.rows):
-    print(row[1].value) # 1행의
+# row는 행인데 어떻게 열로 뽑아오지?
+# for row in tuple(ws.rows):
+#     print(row[1].value) # 인덱스1에 있는 값 찍어옴
+
+# 다른 방법
+# for row in ws.iter_rows():  # 전체 row 반복해서 가져옴
+#     print(row[1].value)
+
+# 타이틀만 출력
+# for column in tuple(ws.columns):
+#     print(column[0].value)
+
+# 다른 방법
+# for column in ws.iter_cols(): #전체 row
+#     print(column[0].value)
+
+# 2번째 줄부터 11번째 줄까지, 2번째 열부터 3번째 열까지
+# for row in ws.iter_rows(min_row=2, max_row=11, min_col=2, max_col=3):
+#     print(row[0].value, row[1].value)
+
+# 데이터 출력되는 모양 확인 - 범위 지정안할 시 min젤 작은, max젤 큰 자동으로 됨.
+# 위에서 아래로
+for row in ws.iter_rows(min_row=2, max_row=11, min_col=2, max_col=3):
+    print(row)
+# 왼쪽에서 오른쪽으로
+for col in ws.iter_cols(min_row=1, max_row=5, min_col=1, max_col=3):
+    print(col)
 
 # 전체 columns
 # print(tuple(ws.columns)) # 괄호 묶음 단위가 열
-
 
 wb.save("sample_5.xlsx")
