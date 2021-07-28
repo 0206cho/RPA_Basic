@@ -1,4 +1,5 @@
-from openpyxl.styles import Font, Border, Side  # 폰트, 테두리 설정하기 위해서
+from openpyxl.styles import Font, Border, Side, PatternFill, Alignment
+# 폰트, 테두리, 배경, 정렬 설정하기 위해서
 from openpyxl import load_workbook
 wb = load_workbook("sample_5.xlsx")
 ws = wb.active
@@ -25,5 +26,22 @@ thin_border = Border(left=Side(style="thin"), right=Side(style="thin"), top=Side
 a1.border = thin_border
 b1.border = thin_border
 c1.border = thin_border
+
+# 셀 배경 적용 - 90점 넘는 셀 초록색
+for row in ws.rows: #전체 row가져오기
+    for cell in row:
+        # 각 cell에 대해서 정렬
+        cell.alignment = Alignment(horizontal="center", vertical="center")
+        # center, left, right, top, bottom
+        if cell.column == 1: #A번호열은 제외
+            continue
+
+        # cell이 정수형 데이터고 90점보다 높으면
+        if isinstance(cell.value, int) and cell.value > 90:
+            cell.fill = PatternFill(fgColor="00FF00", fill_type="solid") #배경을 초록색으로 설정
+            cell.font = Font(color="FF0000") #폰트 색상 변경
+
+# 틀 고정
+ws.freeze_panes = "B2"   #B2 기준으로 틀 고정
 
 wb.save("sample_style.xlsx")
