@@ -74,12 +74,56 @@ import os
 
 # 만약 폴더 내에서 특정 패턴을 가진 파일들을 찾으려면?
 # *.xlsx, *.txt, 자동화*.png
-import fnmatch # 파일 이름이 일치하는지 확인하기 위해서
-pattern = "file*.png" #.py로 끝나는 모든 파일
-result=[]
-for root, dirs, files in os.walk("."):
-    # [a.txt, b.txt, .....11_file_system.py, ...]
-    for name in files:
-        if fnmatch.fnmatch(name, pattern): # 이름이 패턴과 일치하다면
-            result.append(os.path.join(root, name))
-print(result)
+# import fnmatch # 파일 이름이 일치하는지 확인하기 위해서
+# pattern = "file*.png" #.py로 끝나는 모든 파일
+# result=[]
+# for root, dirs, files in os.walk("."):
+#     # [a.txt, b.txt, .....11_file_system.py, ...]
+#     for name in files:
+#         if fnmatch.fnmatch(name, pattern): # 이름이 패턴과 일치하다면
+#             result.append(os.path.join(root, name))
+# print(result)
+
+#X
+# 주어진 경로가 파일인지 폴더인지 확인
+# print(os.path.isdir("2_desktop")) #2_desktop은 폴더인가?
+# print(os.path.isfile("2_desktop")) #2_desktop은 파일인가?
+
+# 만약 지정된 경로에 해당하는 파일 / 폴더가 없다면?
+# print(os.path.isfile("2_desktoppp")) # - flse
+
+# 주어진 경로가 존재하는지
+# if os.path.exists("trash_icon.png"):
+#     print("파일 또는 폴더가 존재합니다.")
+# else:
+#     print("존재하지 않습니다.")
+
+# 파일 만들기
+# open("new_file.txt", "a").close() # 빈 파일 생성
+
+# 파일명 변경하기
+# os.rename("new_file.txt", "new_file_rename.txt") # new_file.txt -> new_file_rename.txt
+
+# 파일 삭제하기
+# os.remove("new_file_rename.txt")
+
+# 폴더 만들기 - 작업공간 기준(현재경로)
+# os.mkdir("new_folder")
+
+# 폴더 만들기 - 절대 경로 기준
+# os.mkdir("D:/RPA/rpa_basic/1_excel/new_folder")
+
+# 하위 폴더를 가진 폴더 생성
+# os.mkdir("new_folder/a/b/c") -> 오류
+# os.makedirs("new_folders/a/b/c")
+
+# 폴더명 변경
+# os.rename("new_folder", "new_folder_rename")
+
+# 폴더 삭제
+# os.rmdir("new_folder_rename") # 폴더 안이 비었을 때만 삭제 가능
+# os.rmdir("new_folders") 폴더 안에 내용이 있어서 삭제 불가능
+
+# 폴더 안이 비어있지 않아도 완전 삭제 가능
+# import shutil # shell utilities
+# shutil.rmtree("new_folders")
