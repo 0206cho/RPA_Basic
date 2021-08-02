@@ -50,15 +50,15 @@ import os
 
 # 파일 목록 가져오기
 # print(os.listdir()) # 모든 폴더, 파일 목록 가져오기
-# X
+# (X
 # print(os.listdir("rpa_basic")) # 주어진 폴더 밑에서 모든 폴더, 파일 목록 가져오기
 
 # 하위 폴더 모두 포함해서 파일 목록 가져오기
 # 현재폴더로부터 가져오고 싶으면 os.walk(.)
-# result = os.walk("rpa_basic") # 주어진 폴더 밑에 있는 모든 폴더, 파일 목록 가져오기
+# result = os.walk("1_excel") # 주어진 폴더 밑에 있는 모든 폴더, 파일 목록 가져오기
 #
 # for root, dirs, files in result:
-#     # X
+#     # (X
 #     print(root, dirs, files)
 
 # 폴더 내에서 특정 파일들을 찾으려면?
@@ -84,7 +84,7 @@ import os
 #             result.append(os.path.join(root, name))
 # print(result)
 
-#X
+# (X
 # 주어진 경로가 파일인지 폴더인지 확인
 # print(os.path.isdir("2_desktop")) #2_desktop은 폴더인가?
 # print(os.path.isfile("2_desktop")) #2_desktop은 파일인가?
@@ -125,5 +125,29 @@ import os
 # os.rmdir("new_folders") 폴더 안에 내용이 있어서 삭제 불가능
 
 # 폴더 안이 비어있지 않아도 완전 삭제 가능
-# import shutil # shell utilities
+import shutil # shell utilities
 # shutil.rmtree("new_folders")
+
+# 파일 복사하기
+# 어떤 파일을 폴더 안으로 복사하기 (X
+# shutil.copy("trash_icon.png", "test_folder") #복사할 파일, 복사할 위치
+
+# 새로운 파일 이름으로 폴더 안에 복사 (X
+# shutil.copy("trash_icon.png", "test_folder/copied_trash_icon.png") # 복사할 파일, 복사할 위치(파일명까지- 파일명변경가능)
+
+# 원본파일 경로, 대상 파일경로까지 - 폴더명만 적으면 오류. 파일명까지 적어야함 (X
+# shutil.copyfile("trash_icon.png", "test_folder/copied_trash.png")
+
+# 원본 파일 경로, 대상폴더(파일 경로) (X
+# shutil.copy2("check.png", "test_folder/copied2_check.png")
+
+# copy, copyfile : 메타정보 복사 (x
+# copy2 : 메타정보복사 O
+
+# 폴더 복사 (X
+# shutil.copytree("1_excel", "1_excel_copy") # 원본 폴더 경로, 대상 폴더 경로
+
+# 폴더 이동 (X
+# shutil.move("test_folder", "test_folder2")
+# 기존 폴더명, 이동할 폴더명 -> 만약 기존 폴더명이 없으면 이동할 폴더명으로 폴더명이 변경됨
+# 기존 폴더명이 있고, 이동할 폴더명이 없으면 이동할 폴더명이 기존폴더명으로 변경
